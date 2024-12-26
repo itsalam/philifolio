@@ -18,7 +18,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "3.4.2",
-    "prettier-plugin-tailline": "^0.2.1"
+    "prettier-plugin-tailline": "^0.2.1",
+    "typescript-eslint": "^8.18.2"
   },
   "dependencies": {
     "@next/mdx": "^13.4.19",
