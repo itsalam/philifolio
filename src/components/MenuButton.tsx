@@ -92,17 +92,24 @@ const MenuButton: React.FC<MenuButtonProps> = ({ children }) => {
         } as CSSProperties
       }
     >
-      <motion.div className="absolute z-20 right-[12px] top-[12px]">
-        {isExpanded ? (
-          <motion.div
-            className="p-[10px] group bg-neutral-800/50 dark:bg-black/50 border border-cyan-100/30 hover:border-neutral-200 text-orange-50 rounded-full shadow-2xl transition-colors duration-300 "
-            onClick={() => toggleExpand()}
-            layoutId="expand-toggle"
-            initial={false}
-            animate={{
-              rotate: -360,
-            }}
-          >
+      <motion.div className="absolute z-20 right-[12px] bottom-[12px]">
+        <motion.div
+          className={cn(
+            "group border shadow-2xl",
+            "border-cyan-100/10 bg-white p-[10px]", // border, background, padding
+            "text-cyan-50 transition-colors duration-200", // textStyles, transitionsAnimations
+            isExpanded &&
+              "bg-neutral-800/50 dark:bg-black/50 border border-cyan-100/30 hover:border-neutral-200 text-orange-50 rounded-full shadow-2xl transition-colors duration-300"
+          )}
+          style={{ borderRadius: 24 }}
+          onClick={toggleExpand}
+          layoutId="expand-toggle"
+          initial={{ rotate: 180 }}
+          animate={{
+            rotate: isExpanded ? 0 : -180,
+          }}
+        >
+          {isExpanded ? (
             <XIcon
               className={cn(
                 "h-7 w-7", // sizing
@@ -111,25 +118,10 @@ const MenuButton: React.FC<MenuButtonProps> = ({ children }) => {
                 "transition-colors duration-200" // transitionsAnimations
               )}
             />
-          </motion.div>
-        ) : (
-          <motion.div
-            className={cn(
-              "group border shadow-2xl",
-              "border-cyan-100/10 bg-white p-[10px]", // border, background, padding
-              "text-cyan-50 transition-colors duration-200" // textStyles, transitionsAnimations
-            )}
-            style={{ borderRadius: 24 }}
-            onClick={toggleExpand}
-            layoutId="expand-toggle"
-            initial={{ rotate: 180 }}
-            animate={{
-              rotate: -180,
-            }}
-          >
+          ) : (
             <MenuIcon className="h-7 w-7 text-black dark:text-neutral-900" />
-          </motion.div>
-        )}
+          )}
+        </motion.div>
       </motion.div>
       <motion.div
         className={cn(
@@ -142,7 +134,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({ children }) => {
             : "dark:from-neutral-900 dark:to-stone-950 bg-gradient-to-b"
         )}
         animate={{
-          top: isExpanded ? 80 : 0,
+          bottom: isExpanded ? 80 : 0,
         }}
       >
         <div className="rounded-[inherit] border    border-neutral-950/20   flex items-center justify-center">

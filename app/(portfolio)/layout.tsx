@@ -44,12 +44,16 @@ export default function RootLayout({
           poppins.variable
         )}
       >
-        <nav className="fixed mt-4 w-full px-4 md:px-12 xl:px-20 z-50">
+        <nav className="fixed mt-4 w-min px-4 md:px-12 xl:px-20 z-20">
           <div className="h-auto flex w-full relative justify-between">
-            <Badge className="font-display h-min rounded-full italic text-xl">
+            <Badge className="font-display h-min rounded-full italic text-xl z-30">
               <Link href="/">Philip.Digital</Link>
             </Badge>
-            <div className="aspect-square">
+          </div>
+        </nav>
+        <nav className="fixed bottom-4 right-0 w-min px-4 md:px-12 xl:px-20 z-20">
+          <div className="h-auto flex w-full relative justify-end">
+            <div className="aspect-square relative z-30">
               <MenuButton>{"Menu"}</MenuButton>
             </div>
           </div>

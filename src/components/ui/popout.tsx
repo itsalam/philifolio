@@ -69,7 +69,7 @@ export function PopoverRoot({ children, className, ...props }: PopoverRootProps)
       <MotionConfig transition={TRANSITION}>
         <motion.div
           className={cn(
-            "relative flex items-center justify-center isolate",
+            "relative flex items-center justify-center",
             popoverLogic.isOpen? "w-full" : "w-auto",
             className
           )}
@@ -94,6 +94,7 @@ export function PopoverTrigger({ children, className }: PopoverTriggerProps) {
     <motion.button
       key="button"
       layoutId={`popover-${uniqueId}`}
+          layout="position"
       className={cn(
         "flex h-9 items-center border border-zinc-950/10 bg-white px-3 text-zinc-950 dark:border-zinc-50/10 dark:bg-zinc-700 dark:text-zinc-50",
         className
@@ -140,6 +141,7 @@ export function PopoverWindow({ children, className, ...props }: ComponentProps<
         {!isOpen && (
           <motion.div
             layoutId={`popover-${uniqueId}`}
+          layout="position"
             className={cn(
               className
             )}
@@ -163,6 +165,12 @@ export function PopoverContent({ children, className, childClassName, ...props }
 
   useOutsideClick(formContainerRef, closePopover)
 
+useEffect(() => {
+    if (isOpen && formContainerRef.current) {
+        formContainerRef.current.scrollTo({ behavior: "smooth" })
+    }
+}, [isOpen])
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -183,6 +191,7 @@ export function PopoverContent({ children, className, childClassName, ...props }
         <CardStyled
           ref={formContainerRef}
           layoutId={`popover-${uniqueId}`}
+          layout="position"
           className={cn(
             "absolute h-[200px] w-[364px] overflow-hidden z-50 bg-neutral-200 p-px", // Changed z-90 to z-50
             className
@@ -200,12 +209,18 @@ export function PopoverContent({ children, className, childClassName, ...props }
         <motion.div
           key="background"
           className={cn(
-            "absolute bg-black/50 z-30", // Changed z-90 to z-50
+            "absolute bg-black/50 z-40 opacity-0", // Changed z-90 to z-50
           )}
           style={{
             width: "150vw",
             height: "150vh",
             position: "absolute",
+          }}
+          animate={{
+            opacity: [0, 1],
+            transition: {
+                delay: 0.2
+            }
           }}
         />
       )}

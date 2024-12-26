@@ -75,7 +75,7 @@ export const Carousel = ({
               "aspect-auto h-full w-max shrink-0", // sizing, flexboxGrid
               "rounded-[inherit] object-cover object-center", // border, object
               focused
-                ? "h-max md:h-auto w-[50vw] md:w-max md:mx-[unset] mx-auto md:max-h-full"
+                ? "h-auto w-[50vw] md:w-max md:mx-[unset] mx-auto md:max-h-full"
                 : "h-full w-max"
             )}
           />
@@ -97,7 +97,10 @@ export const Carousel = ({
             duration: 0.2,
             ease: "easeInOut",
           }}
-          className=" w-full flex md:col-span-2 flex-col m-2 md:my-4"
+          className={cn(
+            "md:col-span-2 md:my-4 m-2 flex h-fit w-full flex-col",
+            focused ? "hidden md:flex" : ""
+          )}
         >
           <h3
             className={cn(
@@ -156,12 +159,12 @@ export const Carousel = ({
             ease: "easeInOut",
           }}
         >
-          <PopoverWindow className="max-w-full relative flex flex-row-reverse md:flex-row md:gap-2 rounded-2xl p-2 items-stretch h-full aspect-[5/4] ">
+          <PopoverWindow className="max-w-full max-h-[inherit] relative flex flex-row-reverse md:flex-row md:gap-2 rounded-2xl p-2 items-stretch h-full aspect-[5/4] ">
             <ElementContent element={element} index={index} />
           </PopoverWindow>
           <PopoverContent
-            className="min-w-full md:max-w-[66vw] xl:max-w-[50vw] h-auto md:max-h-[90vh]"
-            childClassName="p-4 flex md:gap-2 items-stretch h-full md:aspect-[5/4] md:flex-row flex-col"
+            className="min-w-full md:max-w-[66vw] xl:max-w-[50vw] h-auto md:max-h-[90vh] md:h-[36rem]"
+            childClassName="p-4 flex md:gap-2 items-stretch h-full 2xl:aspect-[5/4] md:flex-row flex-col"
           >
             <ElementContent element={element} index={index} focused />
           </PopoverContent>
