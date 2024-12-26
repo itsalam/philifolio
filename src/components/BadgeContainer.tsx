@@ -31,7 +31,6 @@ import {
   Ref,
   RefAttributes,
   RefObject,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -187,7 +186,7 @@ const BadgeComponent: FC<
   );
 };
 
-const BadgeDisplay = forwardRef<typeof motion.div, BadgeDisplayProps>((
+const BadgeDisplay = forwardRef<HTMLElement, BadgeDisplayProps>((
   { tags, className, badgePlacement, children, ...props },
   ref
 ) => {

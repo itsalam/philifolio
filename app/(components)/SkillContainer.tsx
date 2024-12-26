@@ -14,7 +14,7 @@ import {
 
 type BadgeDisplayProps = {
   tags: string[];
-} & ComponentProps<"div">;
+} & Omit<ComponentProps<typeof BadgeDisplay>, "badgePlacement">;
 
 export default function SkillContainer({ tags, ...props }: BadgeDisplayProps) {
   const [badgePlacement, setBadgePlacement] = useState<BadgePlacementFunc>(
