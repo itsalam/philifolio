@@ -56,7 +56,7 @@ export default function RevealText({ text }: RevealTextProps) {
   });
 
   return (
-    <div ref={ref} className="w-full p-8 rounded-lg my-auto">
+    <div ref={ref} className="w-full p-8 rounded-lg">
       <GradientHeading
         id="aboutQuote"
         size={"lg"}

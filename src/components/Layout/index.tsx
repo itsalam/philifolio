@@ -117,7 +117,7 @@ export const Layout: FC<ComponentProps<typeof motion.div>> = ({
             },
           }}
         >
-          <motion.div className="mx-auto max-w-7xl flex flex-col gap-20 lg:px-20 px-4 pb-40 flex-1 min-h-screen max-w-screen w-screen z-20 relative">
+          <motion.div className="mx-auto max-w-7xl flex flex-col gap-20 md:gap-52 lg:px-20 px-4 pb-40 flex-1 min-h-screen max-w-screen w-screen z-20 relative">
             {children}
           </motion.div>
           <Beams />

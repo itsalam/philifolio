@@ -18,7 +18,7 @@ export default function About({ about }: ProjectProps) {
             className="absolute top-0 left-0 w-full h-full z-10 overflow-visible font-body flex md:items-center"
             tags={about.skills}
           >
-            <div className="flex flex-col gap-8 font-display items-center justify-center md:max-w-lg 2xl:max-w-4xl mx-auto">
+            <div className="flex flex-col gap-8 font-display items-center justify-center md:max-w-lg 2xl:max-w-4xl mx-auto my-auto">
               <FancyDisplayFont>Hello!</FancyDisplayFont>
               {about?.aboutQuote && <RevealText text={about.aboutQuote} />}
             </div>
